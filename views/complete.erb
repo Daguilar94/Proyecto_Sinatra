@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+      <meta charset:UTF-8>
+      <title>Lista de Tareas</title>
+    </head>
+    <body>
+    <% if params[:selected]==nil %>
+      <h1> No ha seleccionado ninguna tarea para completar <h1>
+    <%else%>
+      <%redirect '/seleccion/accion/completar'%>
+    <%end%>
+    </body>
+  </html>

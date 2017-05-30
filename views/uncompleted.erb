@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tareas incompletas</title>
+    <style>
+      table, td, th {border: 1px solid black;}
+      table {border-collapse: collapse;width: 100%;}
+      th {text-align: left;}
+    </style>
+  </head>
+  <body>
+    <form action='/seleccion' method='post'>
+      <div class="row">
+        <button type="submit" name="seleccion" value="Inicio">Inicio</button>
+        <button type="submit" name="seleccion" value="All">All</button>
+      </div>
+    </form>
+
+    <h1>Tabla</h1>
+
+    <form action='/seleccion/accion' method='post'>
+    <table>
+      <thead>
+        <tr>
+          <th>Tarea</th>
+          <th>estado</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+          <% @tareas.each_with_index do |tarea, i| %>
+            <tr>
+              <% if tarea["done"] == false %>
+              <td><%="#{tarea["title"]}"%></td>
+              <td>undone</td>
+              <td><label><input type="checkbox" name="selected[]" value=<%="#{i}"%>></label></td>
+              <%end%>
+            </tr>
+          <% end %>
+      </tbody>
+      </table>
+
+
+      <div class="row">
+        <button type="submit" name="accion" value="Agregar tarea">Agregar tarea</button>
+        <button type="submit" name="accion" value="Eliminar tarea">Eliminar tarea</button>
+        <button type="submit" name="accion" value="Completar tarea">Completar tarea</button>
+      </div>
+    </form>
+  </body>
+</html>

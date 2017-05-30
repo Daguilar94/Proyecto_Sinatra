@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+      <meta charset:UTF-8>
+      <title>Lista de Tareas</title>
+    </head>
+    <body>
+    <% if params[:selected]==nil %>
+    <h1> No ha seleccionado ninguna tarea para eliminar <h1>
+
+      <%else%>
+
+
+
+      <h1> Está seguro de que desea eliminar las tareas seleccionadas?</h1>
+      <form action='/seleccion/accion/eliminar' method='post'>
+        <button type="submit" name="eliminar" value="Eliminar">Eliminar</button>
+      </form>
+      <%end%>
+    </body>
+  </html>
