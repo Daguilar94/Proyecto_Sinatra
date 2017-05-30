@@ -1,17 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy|Gloria+Hallelujah" rel="stylesheet">
     <meta charset:UTF-8>
     <title>Lista de Tareas</title>
+    <style>
+      h1 {font-family: 'Satisfy', cursive; color:#DDD; font-size: 70px;}
+      button {font-family: 'Gloria Hallelujah', cursive; font-weight: bold; font-size:30px;}
+      .well{margin-left:auto; margin-right: auto; color: gray;}
+      .row{margin-left:auto; margin-right: auto; margin-top:30px; padding-left:30px;}
+      img {margin-right:auto; margin-left:auto; width:100%; height: 100%}
+      body {
+    background-image: url("http://www.intrawallpaper.com/static/images/backgrounds-background-hd-wallpaper-02-download-widescreen-high-resolution-wallpaper.jpg");
+    background-repeat: no-repeat;
+    background-position: center top;
+    margin-right: 200px;}
+    #message{margin-right: auto; margin-left: auto; margin-top: 180px; width: 80%; text-align: center;}
+    </style>
   </head>
   <body>
-    <form action='/seleccion' method='post'>
-      <div class="row">
-        <button type="submit" name="seleccion" value="All">All</button>
-        <button type="submit" name="seleccion" value="Completed">Completed</button>
-        <button type="submit" name="seleccion" value="Uncompleted">Uncompleted</button>
-      </div>
-    </form>
+    <div class="container fluid"
+        <div class="col-md-10 col-md-offset-1">
+          <form action='/seleccion' method='post'>
+            <div class="row">
+              <button class="btn btn-default" type="submit" name="seleccion" value="All">All</button>
+              <button class="btn btn-default" type="submit" name="seleccion" value="Completed">Completed</button>
+              <button class="btn btn-default" type="submit" name="seleccion" value="Uncompleted">Uncompleted</button>
+            </div>
+          </form>
+          <div id="message">
+            <h1><%=@frases[@nfrase]%></h1>
+          </div>
+        </div>
+<!--<img src="http://www.intrawallpaper.com/static/images/backgrounds-background-hd-wallpaper-02-download-widescreen-high-resolution-wallpaper.jpg">-->
+    </div>
   </body>
 </html>

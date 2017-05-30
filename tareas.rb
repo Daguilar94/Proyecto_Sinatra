@@ -3,8 +3,12 @@ require 'sinatra/reloader' if development?
 require 'make_todo'
 
 seleccionadas = []
+frases=["Sólo falta el tiempo a quien no sabe aprovecharlo – Gaspar Melchor de Jovellanos", "Tengo un día. Si lo sé aprovechar, tengo un tesoro - Gabriela Mistral", "La vida es muy peligrosa. No por las personas que hacen el mal, sino por las que se sientan a ver lo que pasa - Albert Einstein", "Nunca te olvides de sonreír, porque el día en que no sonrías será un día perdido - Charles Chaplin", "Dale a cada día la posibilidad de convertirse en el mejor día de tu vida - Autor desconocido", "La vida es aquello que te va sucediendo mientras te empeñas en hacer otros planes – John Lennon", "No puedes detener la primavera, pero la puedes aprovechar al máximo - Friedrich Hebbel", "Aprovecha el día.  No dejes que termine sin haber crecido un poco, sin haber sido un poco más feliz, sin haber alimentado tus sueños - Walt Whitman", "Vive como si este fuera el último día de tu vida, porque el mañana es inseguro, el ayer no te pertenece y solamente el hoy es tuyo - Autor desconocido"]
 
 get '/' do
+  @frases= frases
+  @nfrase=rand(frases.length)
+  puts "RANDOM: #{@nfrase}"
   #puts "TAREAS: #{Tarea.all}" #######################
   #Tarea.create("Sacar a Ramon") ############
   #puts "TAREAS: #{Tarea.all}" #######################
@@ -78,7 +82,7 @@ post '/seleccion/accion/eliminar' do
     esta = seleccionadas.find { |numero| numero == i.to_s}
     if esta != nil
       id = @tareas[i]['id']
-      puts "ID: #{id}"
+      #puts "ID: #{id}"
       Tarea.destroy(id)
     end
     #seleccionadas = []
@@ -92,7 +96,7 @@ get '/seleccion/accion/completar' do
     esta = seleccionadas.find { |numero| numero == i.to_s}
     if esta != nil
       id = @tareas[i]['id']
-      puts "ID: #{id}"
+      #puts "ID: #{id}"
       Tarea.update(id)
     end
     #seleccionadas = []

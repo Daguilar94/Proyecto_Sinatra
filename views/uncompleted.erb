@@ -1,51 +1,69 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset:UTF-8>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
     <title>Tareas incompletas</title>
     <style>
-      table, td, th {border: 1px solid black;}
-      table {border-collapse: collapse;width: 100%;}
-      th {text-align: left;}
+      table {border: 1px hidden gray;}
+      th {text-align: left; font-size: 25px}
+      th, td {font-family: 'Gloria Hallelujah', cursive;}
+      .well{margin-left:auto;margin-right: auto; color: gray;}
+      .row{margin-left:auto; margin-right: auto;}
+      div.well-color{background-color: #EAE6CA;}
+      .principal {
+        background: url('https://cdn.pixabay.com/photo/2012/03/02/00/28/abstract-20650_960_720.jpg') no-repeat 50%;
+        background-size: cover;
+        color: white;
+        }
+      #accion-button {position: fixed;bottom: 0px; right: 100px;}
     </style>
   </head>
   <body>
-    <form action='/seleccion' method='post'>
-      <div class="row">
-        <button type="submit" name="seleccion" value="Inicio">Inicio</button>
-        <button type="submit" name="seleccion" value="All">All</button>
+    <div class="container fluid"
+      <div class="col-md-10 col-md-offset-1">
+        <div class="row well principal">
+          <form action='/seleccion' method='post'>
+            <div class="row">
+              <button class="btn btn-default" type="submit" name="seleccion" value="Inicio">Inicio</button>
+              <button class="btn btn-default" type="submit" name="seleccion" value="All">All</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="row well">
+          <form action='/seleccion/accion' method='post'>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Tarea</th>
+                  <th>estado</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @tareas.each_with_index do |tarea, i| %>
+                <tr>
+                  <%if tarea["done"] == false %>
+                    <td><%="#{tarea["title"]}"%></td>
+                    <td>undone</td>
+                    <td><label><input type="checkbox" name="selected[]" value=<%="#{i}"%>></label></td>
+                  <%end%>
+                </tr>
+                <%end%>
+              </tbody>
+            </table>
+            <div id="accion-button" class="row">
+              <div class="well well-color">
+                <button class="btn btn-warning" type="submit" name="accion" value="Agregar tarea">Agregar tarea</button>
+                <button class="btn btn-warning" type="submit" name="accion" value="Eliminar tarea">Eliminar tarea</button>
+                <button class="btn btn-warning" type="submit" name="accion" value="Completar tarea">Completar tarea</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-    </form>
-
-    <h1>Tabla</h1>
-
-    <form action='/seleccion/accion' method='post'>
-    <table>
-      <thead>
-        <tr>
-          <th>Tarea</th>
-          <th>estado</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-          <% @tareas.each_with_index do |tarea, i| %>
-            <tr>
-              <% if tarea["done"] == false %>
-              <td><%="#{tarea["title"]}"%></td>
-              <td>undone</td>
-              <td><label><input type="checkbox" name="selected[]" value=<%="#{i}"%>></label></td>
-              <%end%>
-            </tr>
-          <% end %>
-      </tbody>
-      </table>
-
-
-      <div class="row">
-        <button type="submit" name="accion" value="Agregar tarea">Agregar tarea</button>
-        <button type="submit" name="accion" value="Eliminar tarea">Eliminar tarea</button>
-        <button type="submit" name="accion" value="Completar tarea">Completar tarea</button>
-      </div>
-    </form>
+    </div>
   </body>
 </html>
