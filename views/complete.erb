@@ -1,13 +1,23 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Satisfy|Gloria+Hallelujah" rel="stylesheet">
       <meta charset:UTF-8>
       <title>Lista de Tareas</title>
     </head>
+    <style>
+    h1 {font-family: 'Gloria Hallelujah', cursive; text-align: center; color: orange;font-size: 60;}
+    body {background-color: lightgray;}
+    img {margin-left: auto; margin-right: auto;margin-top: 50px; margin-bottom: 50px; height: 500px;}
+    .wrapper {background-color: gray;}
+    </style>
     <body>
     <% if params[:selected]==nil %>
       <h1> No ha seleccionado ninguna tarea para completar <h1>
+      <div class="wrapper">
+        <img src="https://printablefreecoloring.com/image/objects/drawing-light-bulb-6.png">
+      </div>
     <%else%>
       <%redirect '/seleccion/accion/completar'%>
     <%end%>

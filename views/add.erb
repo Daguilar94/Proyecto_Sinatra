@@ -1,13 +1,27 @@
 <html>
   <head>
-    <!--<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
     <meta charset:UTF-8>
     <title>Lista de Tareas</title>
   </head>
+  <style>
+  div.well{margin-right: auto; margin-left: auto; margin-top: 50px; padding: 5px, 0px;}
+  button {position: absolute; right:40px; font-family: 'Gloria Hallelujah', cursive; font-weight: bold; font-size:30px;}
+  h1 {font-family: 'Gloria Hallelujah', cursive; text-align: center; color: orange;font-size: 60;}
+  body {background-color: lightgray;}
+  </style>
   <body>
-    <form action='/seleccion/accion/agregar' method='post'>
-      <input type="text" name="nuevaTarea" placeholder="Ingresa el nombre de la nueva tarea"><br>
-      <button type="submit" name="accion" value="Agregar tarea">Agregar tarea</button>
+    <div class="col-md-8 col-md-offset-2">
+      <h1> Crea una nueva tarea </h1>
+    <div class="well">
+    <form class="form-inline" action='/seleccion/accion/agregar' method='post'>
+      <div class="form-group">
+          <input class="form-control" size="90" type="text" name="nuevaTarea" placeholder="Ingresa el nombre de la nueva tarea"><br>
+      </div>
+      <button class="btn btn-warning" type="submit" name="accion" value="Agregar tarea">Agregar tarea</button>
     </form>
+  </div>
+</div>
   </body>
 </html>
